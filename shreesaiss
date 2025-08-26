@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shree Sai International Senior Secondary School</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* === GLOBAL STYLES === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* === HEADER AND NAVIGATION === */
+        .header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo-text p {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation Menu */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #ffd700;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* === HERO SECTION === */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f0f8ff" width="1200" height="600"/><path fill="%23e6f3ff" d="M0,300 Q300,100 600,300 T1200,300 L1200,600 L0,600 Z"/></svg>');
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #ffd700;
+            color: #1e3c72;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* === SECTIONS LAYOUT === */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #1e3c72;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* === ABOUT SECTION === */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .about-content h3 {
+            font-size: 1.8rem;
+            color: #1e3c72;
+            margin-bottom: 1rem;
+        }
+
+        .about-content p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1e3c72;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* === FEATURES SECTION === */
+        .features {
+            background: #f8f9fa;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: #1e3c72;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #1e3c72;
+        }
+
+        /* === ACADEMICS SECTION === */
+        .academics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .academic-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .academic-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .academic-card ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .academic-card li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .academic-card li:last-child {
+            border-bottom: none;
+        }
+
+        /* === FACILITIES SECTION === */
+        .facilities {
+            background: #f8f9fa;
+        }
+
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .facility-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .facility-icon {
+            font-size: 2rem;
+            color: #1e3c72;
+        }
+
+        /* === ADMISSION SECTION === */
+        .admission-content {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .admission-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .step-item {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .step-number {
+            background: #ffd700;
+            color: #1e3c72;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-weight: bold;
+        }
+
+        /* === GALLERY SECTION === */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            aspect-ratio: 4/3;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* === CONTACT SECTION === */
+        .contact {
+            background: #f8f9fa;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info h3 {
+            color: #1e3c72;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-icon {
+            background: #1e3c72;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #1e3c72;
+        }
+
+        /* === FOOTER === */
+        .footer {
+            background: #1e3c72;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #ffd700;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            padding: 0.3rem 0;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #ffd700;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #2a5298;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #ffd700;
+            color: #1e3c72;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #2a5298;
+            color: #ccc;
+        }
+
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+        }
+
+        /* === SCROLL ANIMATIONS === */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER AND NAVIGATION -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <!-- School Logo - Replace with actual logo -->
+                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle fill='%23ffd700' cx='50' cy='50' r='45'/><text x='50' y='58' text-anchor='middle' font-size='36' font-weight='bold' fill='%231e3c72'>ॐ</text></svg>" alt="School Logo">
+                <div class="logo-text">
+                    <h1>Shree Sai International</h1>
+                    <p>Senior Secondary School</p>
+                </div>
+            </div>
+            
+            <!-- Navigation Menu -->
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#academics">Academics</a></li>
+                <li><a href="#facilities">Facilities</a></li>
+                <li><a href="#admission">Admission</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            
+            <!-- Mobile Menu Toggle -->
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Nurturing Future Leaders</h1>
+            <p>Excellence in Education • Character Building • Global Perspective<br>
+            Empowering students to reach their fullest potential in a caring, innovative environment</p>
+            <div class="cta-buttons">
+                <a href="#admission" class="btn btn-primary">Apply Now</a>
+                <a href="#about" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>About Shree Sai International</h2>
+                <p>A legacy of excellence in education, fostering holistic development since our inception</p>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-content fade-in">
+                    <h3>Our Mission</h3>
+                    <p>To provide world-class education that nurtures intellectual curiosity, moral integrity, and social responsibility in our students, preparing them to be global citizens and future leaders.</p>
+                    
+                    <p>We believe in creating an environment where every child can discover their unique talents and develop them to the fullest potential through innovative teaching methodologies and comprehensive support systems.</p>
+                    
+                    <!-- School Statistics -->
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Students</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Expert Faculty</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">98%</div>
+                            <div class="stat-label">Success Rate</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">15+</div>
+                            <div class="stat-label">Years Excellence</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-visual fade-in">
+                    <!-- Placeholder for school image/video -->
+                    <div style="background: linear-gradient(135deg, #667eea, #764ba2); height: 400px; border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                        <div style="text-align: center;">
+                            <i class="fas fa-graduation-cap" style="font-size: 4rem; margin-bottom: 1rem;"></i>
+                            <p>School Campus Image</p>
+                            <small>Replace with actual school photo</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section class="section features">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Why Choose Shree Sai International?</h2>
+                <p>Discover what makes us the preferred choice for parents and students</p>
+            </div>
+            
+            <div class="features-grid">
+                <!-- Feature 1: Quality Education -->
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Quality Education</h3>
+                    <p>CBSE affiliated curriculum with innovative teaching methods, ensuring comprehensive academic excellence and practical learning experiences.</p>
+                </div>
+                
+                <!-- Feature 2: Experienced Faculty -->
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Expert Faculty</h3>
+                    <p>Highly qualified and experienced teachers dedicated to nurturing each student's potential with personalized attention and care.</p>
+                </div>
+                
+                <!-- Feature 3: Modern Infrastructure -->
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Modern Infrastructure</h3>
+                    <p>State-of-the-art facilities including smart classrooms, well-equipped labs, library, sports complex, and safe transportation.</p>
+                </div>
+                
+                <!-- Feature 4: Holistic Development -->
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <h3>Holistic Development</h3>
+                    <p>Focus on overall personality development through academics, sports, arts, cultural activities, and character building programs.</p>
+                </div>
+                
+                <!-- Feature 5: Individual Attention -->
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Individual Care</h3>
+                    <p>Small class sizes ensuring personalized attention to each student's learning needs and emotional well-being.</p>
+                </div>
+                
+                <!-- Feature 6: Technology Integration -->
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>Technology Integration</h3>
+                    <p>Digital learning platforms, smart boards, computer labs, and online resources to prepare students for the digital age.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACADEMICS SECTION -->
+    <section id="academics" class="section">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Academic Programs</h2>
+                <p>Comprehensive curriculum designed to excel in academics and life skills</p>
+            </div>
+            
+            <div class="academics-grid">
+                <!-- Primary Section -->
+                <div class="academic-card fade-in">
+                    <h3>Primary Section (I-V)</h3>
+                    <p>Building strong foundations with play-way method and interactive learning</p>
+                    <ul>
+                        <li>English, Hindi, Mathematics</li>
+                        <li>Environmental Science</li>
+                        <li>Computer Science</li>
+                        <li>Art & Craft</li>
+                        <li>Physical Education</li>
+                        <li>Moral Science</li>
+                    </ul>
+                </div>
+                
+                <!-- Middle School -->
+                <div class="academic-card fade-in">
+                    <h3>Middle School (VI-VIII)</h3>
+                    <p>Comprehensive curriculum fostering critical thinking and creativity</p>
+                    <ul>
+                        <li>Core Subjects: Eng, Hindi, Math, Science</li>
+                        <li>Social Science</li>
+                        <li>Sanskrit/Third Language</li>
+                        <li>Computer Applications</li>
+                        <li>Arts & Music</li>
+                        <li>Life Skills</li>
+                    </ul>
+                </div>
+                
+                <!-- Secondary School -->
+                <div class="academic-card fade-in">
+                    <h3>Secondary (IX-X)</h3>
+                    <p>CBSE Board preparation with focus on conceptual understanding</p>
+                    <ul>
+                        <li>English, Hindi, Mathematics</li>
+                        <li>Science (Physics, Chemistry, Biology)</li>
+                        <li>Social Science</li>
+                        <li>Information Technology</li>
+                        <li>Additional Subject Options</li>
+                        <li>Career Guidance</li>
+                    </ul>
+                </div>
+                
+                <!-- Senior Secondary -->
+                <div class="academic-card fade-in">
+                    <h3>Senior Secondary (XI-XII)</h3>
+                    <p>Specialized streams for career-focused education</p>
+                    <ul>
+                        <li><strong>Science:</strong> PCM, PCB combinations</li>
+                        <li><strong>Commerce:</strong> Accounts, Business, Economics</li>
+                        <li><strong>Humanities:</strong> History, Geography, Psychology</li>
+                        <li>English Core/Elective</li>
+                        <li>Career Counseling</li>
+                        <li>Competitive Exam Prep</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FACILITIES SECTION -->
+    <section id="facilities" class="section facilities">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>World-Class Facilities</h2>
+                <p>Modern infrastructure and amenities to support comprehensive learning</p>
+            </div>
+            
+            <div class="facilities-grid">
+                <!-- Each facility item with icon and description -->
+                <div class="facility-item fade-in">
+                    <div class="facility-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div>
+                        <h4>Smart Classrooms</h4>
+                        <p>Interactive digital boards and multimedia learning</p>
+                    </div>
+                </div>
+                
+                <div class="facility-item fade-in">
+                    <div class="facility-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <div>
+                        <h4>Science Laboratories</h4>
+                        <p>Well-equipped Physics, Chemistry & Biology labs</p>
+                    </div>
+                </div>
+                
+                <div class="facility-item fade-in">
+                    <div class="facility-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <div>
+                        <h4>Computer Lab</h4>
+                        <p>Modern computers with high-speed internet</p>
+                    </div>
+                </div>
+                
+                <div class="facility-item fade-in">
+                    <div class="facility-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div>
+                        <h4>Library</h4>
+                        <p>Extensive collection of books and digital resources</p>
+                    </div>
+                </div>
+                
+                <div class="facility-item fade-in">
+                    <div class="facility-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <div>
+                        <h4>Sports Complex</h4>
+                        <p>Indoor & outdoor sports facilities and playground</p>
+                    </div>
+                </div>
+                
+                <div class="facility-item fade-in">
+                    <div class="facility-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div>
+                        <h4>Music & Dance Room</h4>
+                        <p>Dedicated spaces for cultural activities</p>
+                    </div>
+                </div>
+                
+                <div class="facility-item fade-in">
+                    <div class="facility-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div>
+                        <h4>Cafeteria</h4>
+                        <p>Hygienic food service with nutritious meals</p>
+                    </div>
+                </div>
+                
+                <div class="facility-item fade-in">
+                    <div class="facility-icon">
+                        <i class="fas fa-bus"></i>
+                    </div>
+                    <div>
+                        <h4>Transportation</h4>
+                        <p>Safe and reliable bus service</p>
+                    </div>
+                </div>
+                
+                <div class="facility-item fade-in">
+                    <div class="facility-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div>
+                        <h4>Security & Safety</h4>
+                        <p>24/7 security and CCTV surveillance</p>
+                    </div>
+                </div>
+                
+                <div class="facility-item fade-in">
+                    <div class="facility-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <div>
+                        <h4>Medical Room</h4>
+                        <p>First aid and health checkup facilities</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ADMISSION SECTION -->
+    <section id="admission" class="section">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Admission Process</h2>
+                <p>Join our school family and embark on a journey of excellence</p>
+            </div>
+            
+            <div class="admission-content fade-in">
+                <h3>Admissions Open for Academic Year 2024-25</h3>
+                <p>We welcome bright minds to join our educational community. Follow these simple steps to secure admission.</p>
+                
+                <div class="admission-steps">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <h4>Application Form</h4>
+                        <p>Download and fill the admission form completely</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <h4>Submit Documents</h4>
+                        <p>Submit required documents with application form</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <h4>Entrance Test</h4>
+                        <p>Appear for entrance examination (if applicable)</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">4</div>
+                        <h4>Interview</h4>
+                        <p>Parent-student interaction with school management</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">5</div>
+                        <h4>Fee Payment</h4>
+                        <p>Pay admission fee to confirm your seat</p>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 2rem;">
+                    <h4>Required Documents:</h4>
+                    <p>Birth Certificate • Previous School Records • Passport Size Photos • Address Proof • Medical Certificate</p>
+                </div>
+                
+                <div style="margin-top: 2rem;">
+                    <a href="#contact" class="btn btn-primary">Download Application Form</a>
+                    <a href="#contact" class="btn btn-secondary">Schedule Visit</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section id="gallery" class="section">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>School Gallery</h2>
+                <p>Glimpses of life at Shree Sai International - memories being made every day</p>
+            </div>
+            
+            <!-- Gallery Grid - Replace with actual images -->
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in">
+                    <div style="text-align: center;">
+                        <i class="fas fa-chalkboard-teacher" style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
+                        <p>Classroom Activities</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <div style="text-align: center;">
+                        <i class="fas fa-flask" style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
+                        <p>Science Laboratory</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <div style="text-align: center;">
+                        <i class="fas fa-running" style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
+                        <p>Sports Activities</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <div style="text-align: center;">
+                        <i class="fas fa-music" style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
+                        <p>Cultural Programs</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <div style="text-align: center;">
+                        <i class="fas fa-graduation-cap" style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
+                        <p>Annual Function</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <div style="text-align: center;">
+                        <i class="fas fa-book" style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
+                        <p>Library & Reading</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <div style="text-align: center;">
+                        <i class="fas fa-bus" style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
+                        <p>School Transportation</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <div style="text-align: center;">
+                        <i class="fas fa-users" style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
+                        <p>Student Activities</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Get In Touch</h2>
+                <p>We'd love to hear from you. Contact us for admissions, queries, or school visits</p>
+            </div>
+            
+            <div class="contact-grid">
+                <!-- Contact Information -->
+                <div class="contact-info fade-in">
+                    <h3>Contact Information</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Address</h4>
+                            <p>Shree Sai International Senior Secondary School<br>
+                            123 Education Street, Jaipur, Rajasthan 302001<br>
+                            India</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Phone Numbers</h4>
+                            <p>Main Office: +91-141-1234567<br>
+                            Admission Office: +91-141-7654321<br>
+                            Mobile: +91-9876543210</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@shreesaiintl.edu.in<br>
+                            admission@shreesaiintl.edu.in<br>
+                            principal@shreesaiintl.edu.in</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4>Office Hours</h4>
+                            <p>Monday - Friday: 8:00 AM - 4:00 PM<br>
+                            Saturday: 8:00 AM - 1:00 PM<br>
+                            Sunday: Closed</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="contact-form fade-in">
+                    <h3>Send us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="inquiry-type">Inquiry Type *</label>
+                            <select id="inquiry-type" name="inquiry-type" required>
+                                <option value="">Select Inquiry Type</option>
+                                <option value="admission">Admission Inquiry</option>
+                                <option value="academics">Academic Information</option>
+                                <option value="facilities">Facilities Tour</option>
+                                <option value="fees">Fee Structure</option>
+                                <option value="transport">Transportation</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="student-class">Student's Grade/Class (if applicable)</label>
+                            <select id="student-class" name="student-class">
+                                <option value="">Select Class</option>
+                                <option value="nursery">Nursery</option>
+                                <option value="lkg">LKG</option>
+                                <option value="ukg">UKG</option>
+                                <option value="1">Class 1</option>
+                                <option value="2">Class 2</option>
+                                <option value="3">Class 3</option>
+                                <option value="4">Class 4</option>
+                                <option value="5">Class 5</option>
+                                <option value="6">Class 6</option>
+                                <option value="7">Class 7</option>
+                                <option value="8">Class 8</option>
+                                <option value="9">Class 9</option>
+                                <option value="10">Class 10</option>
+                                <option value="11">Class 11</option>
+                                <option value="12">Class 12</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Please describe your inquiry in detail..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- School Info -->
+                <div class="footer-section">
+                    <h3>Shree Sai International</h3>
+                    <p>Nurturing future leaders through excellence in education, character building, and holistic development.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#academics">Academic Programs</a></li>
+                        <li><a href="#admission">Admission Process</a></li>
+                        <li><a href="#facilities">Facilities</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Academic Programs -->
+                <div class="footer-section">
+                    <h3>Academic Programs</h3>
+                    <ul>
+                        <li><a href="#academics">Primary Section (I-V)</a></li>
+                        <li><a href="#academics">Middle School (VI-VIII)</a></li>
+                        <li><a href="#academics">Secondary (IX-X)</a></li>
+                        <li><a href="#academics">Senior Secondary (XI-XII)</a></li>
+                        <li><a href="#academics">Career Guidance</a></li>
+                        <li><a href="#academics">Competitive Exams</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Important Info -->
+                <div class="footer-section">
+                    <h3>Important Information</h3>
+                    <ul>
+                        <li><a href="#">Fee Structure</a></li>
+                        <li><a href="#">Academic Calendar</a></li>
+                        <li><a href="#">School Timings</a></li>
+                        <li><a href="#">Uniform Guidelines</a></li>
+                        <li><a href="#">Transport Routes</a></li>
+                        <li><a href="#">Holiday List</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Shree Sai International Senior Secondary School. All rights reserved. | 
+                Designed with ❤️ for Excellence in Education | 
+                <a href="#" style="color: #ffd700;">Privacy Policy</a> | 
+                <a href="#" style="color: #ffd700;">Terms & Conditions</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT FOR INTERACTIVITY -->
+    <script>
+        // === SMOOTH SCROLLING FOR NAVIGATION LINKS ===
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // === MOBILE MENU TOGGLE ===
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenu.addEventListener('click', () => {
+            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // === SCROLL ANIMATIONS ===
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // === ACTIVE NAVIGATION HIGHLIGHT ===
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
+            
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // === CONTACT FORM HANDLING ===
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const formObject = {};
+            formData.forEach((value, key) => {
+                formObject[key] = value;
+            });
+
+            // Show success message (replace with actual form submission logic)
+            alert('Thank you for your inquiry! We will get back to you soon.');
+            
+            // Reset form
+            this.reset();
+            
+            // In a real implementation, you would send this data to your server
+            console.log('Form submitted:', formObject);
+        });
+
+        // === HEADER BACKGROUND ON SCROLL ===
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(30, 60, 114, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #1e3c72, #2a5298)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // === GALLERY HOVER EFFECTS (if you add real images later) ===
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.transform = 'scale(1.05)';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'scale(1)';
+            });
+        });
+
+        // === STATISTICS COUNTER ANIMATION ===
+        function animateCounter(element, target) {
+            let count = 0;
+            const increment = target / 100;
+            
+            const timer = setInterval(() => {
+                count += increment;
+                if (count >= target) {
+                    count = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(count) + (target >= 100 ? '+' : '%');
+            }, 20);
+        }
+
+        // Trigger counter animation when stats section is visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => {
+                        const target = parseInt(stat.textContent);
+                        animateCounter(stat, target);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsGrid = document.querySelector('.stats-grid');
+        if (statsGrid) {
+            statsObserver.observe(statsGrid);
+        }
+
+        // === RESPONSIVE MENU HANDLING ===
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navMenu.style.display = 'flex';
+            } else {
+                navMenu.style.display = 'none';
+            }
+        });
+
+        // === LOADING ANIMATION (optional) ===
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+        });
+
+        // === BACK TO TOP BUTTON (optional enhancement) ===
+        const backToTopButton = document.createElement('button');
+        backToTopButton.innerHTML = '<i class="fas fa-arrow-up"></i>';
+        backToTopButton.className = 'back-to-top';
+        backToTopButton.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #1e3c72;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        `;
+
+        document.body.appendChild(backToTopButton);
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        console.log('Shree Sai International School Website Loaded Successfully! 🎓');
+    </script>
+</body>
+</html>
